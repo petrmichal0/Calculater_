@@ -20,13 +20,13 @@ function reducer(state, action) {
           overwrite: false,
         };
       if (action.payload === "0" && state.currentOperand === "0") return state;
-      if (action.payload === "." && state.currentOperand.includes("."))
-        return state;
       if (action.payload !== "0" && state.currentOperand === "0")
         return {
           ...state,
           currentOperand: action.payload,
         };
+      if (action.payload === "." && state.currentOperand.includes("."))
+        return state;
 
       return {
         ...state,
@@ -68,13 +68,6 @@ function reducer(state, action) {
           currentOperand: "",
         };
       }
-      if (state.currentOperand === "") return state;
-      if (state.currentOperand.length === 1) {
-        return {
-          ...state,
-          currentOperand: "",
-        };
-      }
 
       return {
         ...state,
@@ -105,9 +98,8 @@ function reducer(state, action) {
 const evaluate = ({ currentOperand, previousOperand, operation }) => {
   const prev = parseFloat(previousOperand);
   const current = parseFloat(currentOperand);
-  if (isNaN(prev) || isNaN(current)) return "";
 
-  let computation = "";
+  let computation;
 
   if (operation === "+") {
     computation = prev + current;
