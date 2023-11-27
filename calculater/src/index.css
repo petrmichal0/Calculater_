@@ -19,7 +19,7 @@
 }
 
 .calculater-grid > button:hover {
-  background-color: pink;
+  background-color: rgb(230, 96, 207);
 }
 
 .span-two {
@@ -34,7 +34,6 @@
   align-items: flex-end;
   justify-content: space-around;
   padding: 0.75rem;
-  word-wrap: break-word;
   word-break: break-all;
 }
 

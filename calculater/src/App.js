@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+
 import DigitButton from "./components/DigitButton";
 import OperationButton from "./components/OperationButton";
 
@@ -21,6 +22,11 @@ function reducer(state, action) {
       if (action.payload === "0" && state.currentOperand === "0") return state;
       if (action.payload === "." && state.currentOperand.includes("."))
         return state;
+      if (action.payload !== "0" && state.currentOperand === "0")
+        return {
+          ...state,
+          currentOperand: action.payload,
+        };
 
       return {
         ...state,
